@@ -16,7 +16,7 @@ pipeline {
         stage('Deploy to Kubernetes Cluster') {
             steps {
                 script {
-                    sh "kubectl create namespace -n prometheus"
+                    sh "kubectl create namespace prometheus"
                     sh "kubectl cp prometheus-config.yaml prometheus-config.yaml -n prometheus"
                     sh "kubectl cp prometheus-deployment.yaml prometheus-deployment.yaml -n prometheus"
                     sh "kubectl cp prometheus-service.yaml prometheus-service.yaml -n prometheus"
