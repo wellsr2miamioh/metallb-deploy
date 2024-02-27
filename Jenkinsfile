@@ -16,6 +16,7 @@ pipeline {
         stage('Deploy to Kubernetes Cluster') {
             steps {
                 script {
+                    sh "kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.3/config/manifests/metallb-native.yaml"
                     sh "kubectl create namespace metallb-system"
                     sh "kubectl apply -f l2advertisement.yaml -n metallb-system"
                     sh "kubectl apply -f ipaddresses.yaml -n metallb-system"
