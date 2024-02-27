@@ -22,13 +22,6 @@ pipeline {
                     } else {
                         sh "kubectl create namespace prometheus"
                     }
-                    def podName = sh(script: "kubectl get pods -l app=prometheus -n prometheus -o jsonpath='{.items[0].metadata.name}'", returnStdout: true).trim()
-                    if (podName) {
-                        echo "Found pod: ${podName}"
-                    }
-                    sh "kubectl cp ./prometheus-config.yaml prometheus/${podName}:/prometheus-config.yaml"
-                    sh "kubectl cp ./prometheus-deployment.yaml prometheus/${podName}:/prometheus-deployment.yaml"
-                    sh "kubectl cp ./prometheus-service.yaml prometheus/${podName}:/prometheus-service.yaml -n prometheus"
                     sh "kubectl apply -f prometheus-config.yaml -n prometheus"
                     sh "kubectl apply -f prometheus-deployment.yaml -n prometheus"
                     sh "kubectl apply -f prometheus-service.yaml -n prometheus"
