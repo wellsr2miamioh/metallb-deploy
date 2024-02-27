@@ -16,7 +16,7 @@ pipeline {
         stage('Deploy to Kubernetes Cluster') {
             steps {
                 script {
-                    def namespaceExists = sh (script: "kubectl get namespace prometheus --ignore-not-found"; returnStatus: true) == 0
+                    def namespaceExists = sh (script: "kubectl get namespace prometheus --ignore-not-found", returnStatus: true) == 0
                     if (namespaceExists) {
                         echo "Namespace Exists"
                     } else {
