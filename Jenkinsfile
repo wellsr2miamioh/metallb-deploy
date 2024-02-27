@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         GITHUB_URL = 'https://github.com/miamioh-cit/prometheus.git'
-        KUBECONFIG = credentials('metal')
+        KUBECONFIG = credentials('roseaw')
     }
 
     stages {
