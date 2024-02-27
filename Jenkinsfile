@@ -17,8 +17,10 @@ pipeline {
             steps {
                 script {
                     sh "kubectl create namespace metallb-system"
-                    sh "kubectl apply -f l2advertisements.yaml -n metallb-system"
+                    sh "kubectl apply -f l2advertisement.yaml -n metallb-system"
                     sh "kubectl apply -f ipaddresses.yaml -n metallb-system"
+                    sh "kubectl get IPAddressPool -A"
+                    sh "kubectl get L2Advertisement -A"
                 }
             }
         }
