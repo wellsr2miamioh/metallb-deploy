@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         GITHUB_URL = 'https://github.com/miamioh-cit/metallb.git'
-        KUBECONFIG = credentials('roseaw')
+        KUBECONFIG = credentials('roseaw-225')
     }
 
     stages {
