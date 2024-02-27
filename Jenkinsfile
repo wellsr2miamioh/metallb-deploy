@@ -2,7 +2,7 @@ pipeline {
     agent any 
 
     environment {
-        GITHUB_URL = 'https://github.com/miamioh-cit/prometheus.git'
+        GITHUB_URL = 'https://github.com/miamioh-cit/metallb.git'
         KUBECONFIG = credentials('roseaw')
     }
 
@@ -16,10 +16,9 @@ pipeline {
         stage('Deploy to Kubernetes Cluster') {
             steps {
                 script {
-                    sh "kubectl create namespace prometheus"
-                    sh "kubectl apply -f prometheus-config.yaml -n prometheus"
-                    sh "kubectl apply -f prometheus-deployment.yaml -n prometheus"
-                    sh "kubectl apply -f prometheus-service.yaml -n prometheus"
+                    sh "kubectl create namespace metallb-system"
+                    sh "kubectl apply -f l2advertisements.yaml -n metallb-system"
+                    sh "kubectl apply -f ipaddresses.yaml -n metallb-system"
                 }
             }
         }
