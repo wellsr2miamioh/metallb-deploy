@@ -22,9 +22,9 @@ pipeline {
                     } else {
                         sh "kubectl create namespace prometheus"
                     }
-                    sh "kubectl cp ./prometheus-config.yaml prometheus/prometheus-config.yaml"
-                    sh "kubectl cp ./prometheus-deployment.yaml prometheus/prometheus-deployment.yaml"
-                    sh "kubectl cp ./prometheus-service.yaml prometheus/prometheus-service.yaml -n prometheus"
+                    sh "kubectl cp ./prometheus-config.yaml prometheus/controller/prometheus-config.yaml"
+                    sh "kubectl cp ./prometheus-deployment.yaml prometheus/controller/prometheus-deployment.yaml"
+                    sh "kubectl cp ./prometheus-service.yaml prometheus/controller/prometheus-service.yaml -n prometheus"
                     sh "kubectl apply -f prometheus-config.yaml -n prometheus"
                     sh "kubectl apply -f prometheus-deployment.yaml -n prometheus"
                     sh "kubectl apply -f prometheus-service.yaml -n prometheus"
