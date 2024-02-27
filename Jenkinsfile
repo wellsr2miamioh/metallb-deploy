@@ -17,7 +17,9 @@ pipeline {
             steps {
                 script {
                     sh "kubectl create namespace prometheus"
-                    sh "kubectl cp . prometheus"
+                    sh "kubectl cp prometheus-config.yaml prometheus"
+                    sh "kubectl cp prometheus-deployment.yaml prometheus"
+                    sh "kubectl cp prometheus-service.yaml prometheus"
                     sh "kubectl apply -f prometheus-config.yaml -n prometheus"
                     sh "kubectl apply -f prometheus-service.yaml -n prometheus"
                 }
