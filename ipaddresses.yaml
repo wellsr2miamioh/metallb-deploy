@@ -1,0 +1,8 @@
+apiVersion: metallb.io/v1beta1 
+kind: IPAddressPool 
+metadata: 
+  name: second-pool 
+  namespace: metallb-system 
+spec: 
+  addresses: 
+  - 10.48.228.80-10.48.228.84
