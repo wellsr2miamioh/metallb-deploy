@@ -16,7 +16,12 @@ pipeline {
         stage('Deploy to Kubernetes Cluster') {
             steps {
                 script {
-                    sh "kubectl create namespace prometheus"
+                    def namespaceExists = sh (script: "kubectl get namespace prometheus --ignore-not-found"; returnStatus: true) == 0
+                    if (namespaceExists) {
+                        echo "Namespace Exists"
+                    } else {
+                        sh "kubectl create namespace prometheus"
+                    }
                     sh "kubectl cp ./prometheus-config.yaml prometheus/prometheus-config.yaml"
                     sh "kubectl cp ./prometheus-deployment.yaml prometheus/prometheus-deployment.yaml"
                     sh "kubectl cp ./prometheus-service.yaml prometheus/prometheus-service.yaml -n prometheus"
