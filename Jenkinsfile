@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         GITHUB_URL = 'https://github.com/miamioh-cit/metallb-deploy.git'
-        KUBECONFIG = credentials('roseaw-225')   //  Change this <----
+        KUBECONFIG = credentials('roseaw-225')   // <---- Change this to match your kubernetes cluster credentials
     }
 
     stages {
