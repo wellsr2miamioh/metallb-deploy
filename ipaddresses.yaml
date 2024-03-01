@@ -5,4 +5,4 @@ metadata:
   namespace: metallb-system 
 spec: 
   addresses: 
-  - 10.48.10.121/24  #  <--- Change this to match the IP you were given 
+  - 10.48.10.227/24   #  <--- Change this to match the IP you were given 
